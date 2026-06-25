@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { DynamicFavicon } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'AskFor — Create Beautiful Surprise Invitations',
@@ -34,6 +35,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <DynamicFavicon />
         {children}
       </body>
     </html>

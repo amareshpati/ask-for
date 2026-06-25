@@ -7,3 +7,4 @@ export { ProgressBar } from './ProgressBar';
 export { Modal } from './Modal';
 export { AnimatedBackground } from './AnimatedBackground';
 export { Confetti } from './Confetti';
+export { DynamicFavicon } from './DynamicFavicon';
