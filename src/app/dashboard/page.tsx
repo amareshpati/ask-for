@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Plus, LogOut, Sparkles, Share2, Trash2, Copy, Check,
-  Heart, Clock, MessageCircle, ChevronDown, Eye, User, Lock, Plane, Edit,
+  Heart, Clock, MessageCircle, ChevronDown, Eye, User, Lock, Plane, Edit, Lightbulb,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, AnimatedBackground, Modal, Input } from '@/components/ui';
 import { ShareDialog } from '@/components/dashboard/ShareDialog';
+import { SuggestionPopup } from '@/components/dashboard/SuggestionPopup';
 import {
   type InvitationWithResponse,
   type InvitationStatus,
@@ -47,6 +48,7 @@ export default function DashboardPage() {
   const [passwordError, setPasswordError] = useState('');
   const [passwordSuccess, setPasswordSuccess] = useState('');
   const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [isSuggestionOpen, setIsSuggestionOpen] = useState(false);
 
   // Dashboard theme settings (Date vs Travel dashboard)
   const [dashboardTheme, setDashboardTheme] = useState<'date' | 'travel'>('date');
@@ -542,6 +544,12 @@ export default function DashboardPage() {
         />
       )}
 
+      {/* Suggestion Popup */}
+      <SuggestionPopup
+        externalOpen={isSuggestionOpen}
+        onExternalOpenChange={setIsSuggestionOpen}
+      />
+
       {/* Profile Settings Modal */}
       <Modal
         isOpen={isProfileOpen}
@@ -606,6 +614,29 @@ export default function DashboardPage() {
               Update Password
             </Button>
           </form>
+
+          {/* My Suggestions */}
+          <div className="pt-4 border-t border-surface-200/60">
+            <button
+              onClick={() => {
+                setIsProfileOpen(false);
+                setIsSuggestionOpen(true);
+              }}
+              className="w-full flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 hover:border-amber-300 transition-all cursor-pointer group"
+            >
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Lightbulb className="w-4.5 h-4.5 text-white" />
+              </div>
+              <div className="text-left">
+                <span className="text-sm font-semibold text-surface-900 group-hover:text-amber-700 transition-colors">
+                  My Suggestions
+                </span>
+                <p className="text-xs text-surface-500 mt-0.5">
+                  View, edit, or submit new feedback
+                </p>
+              </div>
+            </button>
+          </div>
 
           {/* Sign Out Action */}
           <div className="pt-4 border-t border-surface-200/60">

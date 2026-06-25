@@ -141,3 +141,8 @@ CREATE OR REPLACE TRIGGER trigger_update_invitation_status
   AFTER INSERT ON invitation_responses
   FOR EACH ROW
   EXECUTE FUNCTION update_invitation_status_on_response();
+
+-- ============================================
+-- Additional Tables
+-- ============================================
+-- See: suggestions_migration.sql for the suggestions table
