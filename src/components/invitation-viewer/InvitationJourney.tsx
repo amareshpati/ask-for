@@ -53,6 +53,11 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [selectedFoods, setSelectedFoods] = useState<string[]>([]);
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Parse food and location options lists
   let foodOptions: string[] = [];
@@ -440,34 +445,40 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
 
             <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-surface-200/60 shadow-card max-h-64 overflow-y-auto">
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                {calendarDates.slice(0, 30).map((date) => {
-                  const d = new Date(date + 'T00:00:00');
-                  const isSelected = selectedDate === date;
-                  return (
-                    <motion.button
-                      key={date}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setSelectedDate(date)}
-                      className={`
-                        p-3 rounded-xl text-center transition-all cursor-pointer
-                        ${
-                          isSelected
-                            ? 'bg-gradient-to-br from-date-pink to-date-purple text-white shadow-button'
-                            : 'bg-surface-50 hover:bg-surface-100 text-surface-700 border border-surface-200'
-                        }
-                      `}
-                    >
-                      <div className="text-xs font-medium opacity-70">
-                        {d.toLocaleDateString('en-US', { weekday: 'short' })}
-                      </div>
-                      <div className="text-lg font-bold">{d.getDate()}</div>
-                      <div className="text-xs opacity-70">
-                        {d.toLocaleDateString('en-US', { month: 'short' })}
-                      </div>
-                    </motion.button>
-                  );
-                })}
+                {!mounted ? (
+                  Array.from({ length: 12 }).map((_, i) => (
+                    <div key={i} className="p-3 rounded-xl bg-surface-50 border border-surface-200 animate-pulse h-16" />
+                  ))
+                ) : (
+                  calendarDates.slice(0, 30).map((date) => {
+                    const d = new Date(date + 'T00:00:00');
+                    const isSelected = selectedDate === date;
+                    return (
+                      <motion.button
+                        key={date}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setSelectedDate(date)}
+                        className={`
+                          p-3 rounded-xl text-center transition-all cursor-pointer
+                          ${
+                            isSelected
+                              ? 'bg-gradient-to-br from-date-pink to-date-purple text-white shadow-button'
+                              : 'bg-surface-50 hover:bg-surface-100 text-surface-700 border border-surface-200'
+                          }
+                        `}
+                      >
+                        <div className="text-xs font-medium opacity-70">
+                          {d.toLocaleDateString('en-US', { weekday: 'short' })}
+                        </div>
+                        <div className="text-lg font-bold">{d.getDate()}</div>
+                        <div className="text-xs opacity-70">
+                          {d.toLocaleDateString('en-US', { month: 'short' })}
+                        </div>
+                      </motion.button>
+                    );
+                  })
+                )}
               </div>
             </div>
 
