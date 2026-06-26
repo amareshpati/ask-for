@@ -8,7 +8,10 @@ export function generateSlug(length: number = 10): string {
 }
 
 export function getAppUrl(): string {
-  return process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  return process.env.NEXT_PUBLIC_APP_URL || 'https://askfor.devvloper.in';
 }
 
 export function getInviteUrl(slug: string): string {

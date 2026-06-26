@@ -348,7 +348,7 @@ export default function LandingPage() {
               <Lock className="w-5 h-5 text-date-purple" />
               <h3>Change Password</h3>
             </div>
-            
+
             <Input
               type="password"
               label="New Password"
