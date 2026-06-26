@@ -17,15 +17,15 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'ref' | 'children'
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-gradient-to-r from-date-pink to-date-purple text-white shadow-button hover:shadow-elevated',
+    'bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-button hover:shadow-glow-sm shimmer-hover',
   secondary:
-    'bg-surface-100 text-surface-800 border border-surface-200 hover:bg-surface-200 hover:border-surface-300',
+    'bg-white/[0.06] text-surface-200 border border-white/[0.1] hover:bg-white/[0.1] hover:border-white/[0.15]',
   ghost:
-    'bg-transparent text-surface-600 hover:bg-surface-100 hover:text-surface-800',
+    'bg-transparent text-surface-300 hover:bg-white/[0.06] hover:text-surface-100',
   danger:
-    'bg-gradient-to-r from-error to-red-500 text-white shadow-button hover:shadow-elevated',
+    'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-button hover:shadow-glow-sm',
   success:
-    'bg-gradient-to-r from-emerald-500 to-success text-white shadow-button hover:shadow-elevated',
+    'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white shadow-button hover:shadow-glow-sm',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

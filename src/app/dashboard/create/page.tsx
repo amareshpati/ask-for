@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Check, Sparkles } from 'lucide-react';
 import { Button, ProgressBar, AnimatedBackground } from '@/components/ui';
 import { RecipientStep } from '@/components/invitation-builder/RecipientStep';
@@ -30,8 +30,9 @@ const slideVariants = {
   }),
 };
 
-export default function CreateInvitationPage() {
+function CreateInvitationContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,6 +44,17 @@ export default function CreateInvitationPage() {
     favourite_location: JSON.stringify(LOCATION_OPTIONS),
     final_question: 'Will you go on a date with me?',
   });
+
+  useEffect(() => {
+    const flow = searchParams.get('flow');
+    if (flow === 'travel') {
+      setFormData((prev) => ({
+        ...prev,
+        type: 'travel',
+        final_question: 'Will you travel with me?',
+      }));
+    }
+  }, [searchParams]);
 
   const updateField = (field: keyof CreateInvitationData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -140,8 +152,8 @@ export default function CreateInvitationPage() {
   };
 
   return (
-    <main className="min-h-dvh relative flex flex-col">
-      <AnimatedBackground theme="date" intensity={0.6} />
+    <main className="min-h-dvh relative flex flex-col" data-theme={formData.type}>
+      <AnimatedBackground theme={formData.type} intensity={0.6} />
 
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12">
@@ -149,15 +161,15 @@ export default function CreateInvitationPage() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => router.push('/dashboard')}
-          className="flex items-center gap-2 text-surface-600 hover:text-surface-900 transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-surface-500 hover:text-surface-200 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-5 h-5" />
           <span className="text-sm font-medium hidden sm:inline">Dashboard</span>
         </motion.button>
 
         <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-date-purple" />
-          <span className="text-sm font-semibold text-surface-700">
+          <Sparkles className="w-5 h-5 text-accent-400" />
+          <span className="text-sm font-semibold text-surface-300">
             New Invitation
           </span>
         </div>
@@ -216,7 +228,7 @@ export default function CreateInvitationPage() {
               onClick={handleSubmit}
               isLoading={isSubmitting}
               icon={<Check className="w-4 h-4" />}
-              className="from-emerald-500 to-green-500"
+              className="from-emerald-600 to-emerald-700"
             >
               Create Invitation
             </Button>
@@ -224,5 +236,17 @@ export default function CreateInvitationPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function CreateInvitationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-surface-950 flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-accent-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <CreateInvitationContent />
+    </Suspense>
   );
 }

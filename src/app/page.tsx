@@ -100,8 +100,8 @@ export default function LandingPage() {
         className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12"
       >
         <Link href="/" className="flex items-center gap-2 hover:opacity-85 transition-opacity">
-          <Sparkles className="w-6 h-6 text-date-purple" />
-          <span className="text-xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-6 h-6 text-accent-400" />
+          <span className="text-xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
@@ -110,7 +110,7 @@ export default function LandingPage() {
             <>
               <Link
                 href="/dashboard"
-                className="text-sm font-medium text-surface-600 hover:text-surface-900 transition-colors px-4 py-2 rounded-full hover:bg-white/60 backdrop-blur-sm"
+                className="text-sm font-medium text-surface-400 hover:text-surface-100 transition-colors px-4 py-2 rounded-full hover:bg-white/[0.06]"
               >
                 Dashboard
               </Link>
@@ -118,7 +118,7 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsProfileOpen(true)}
-                className="p-2 rounded-xl text-surface-400 hover:text-surface-600 hover:bg-white/60 backdrop-blur-sm transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-surface-500 hover:text-surface-300 hover:bg-white/[0.06] transition-colors cursor-pointer"
                 title="Profile Settings"
               >
                 <User className="w-5 h-5" />
@@ -127,7 +127,7 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleSignOut}
-                className="p-2 rounded-xl text-surface-400 hover:text-surface-600 hover:bg-white/60 backdrop-blur-sm transition-colors cursor-pointer"
+                className="p-2 rounded-xl text-surface-500 hover:text-surface-300 hover:bg-white/[0.06] transition-colors cursor-pointer"
                 title="Sign Out"
               >
                 <LogOut className="w-5 h-5" />
@@ -136,7 +136,7 @@ export default function LandingPage() {
           ) : (
             <Link
               href="/auth/login"
-              className="text-sm font-medium text-surface-600 hover:text-surface-900 transition-colors px-4 py-2 rounded-full hover:bg-white/60 backdrop-blur-sm"
+              className="text-sm font-medium text-surface-400 hover:text-surface-100 transition-colors px-4 py-2 rounded-full hover:bg-white/[0.06]"
             >
               Sign In
             </Link>
@@ -156,22 +156,22 @@ export default function LandingPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-            className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-md border border-white/30 rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2 bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-full px-4 py-1.5 mb-6"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-date-pink opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-date-pink" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500" />
             </span>
-            <span className="text-xs font-medium text-surface-600">
+            <span className="text-xs font-medium text-surface-400">
               Create magical moments
             </span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-surface-900 leading-[1.1] mb-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-surface-50 leading-[1.1] mb-4 font-[family-name:var(--font-display)]">
             Ask with{' '}
             <span className="gradient-text-date">Style</span>
           </h1>
-          <p className="text-lg md:text-xl text-surface-500 max-w-md mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-surface-400 max-w-md mx-auto leading-relaxed">
             Create beautiful, interactive invitations that make asking someone
             special an unforgettable experience.
           </p>
@@ -203,10 +203,10 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.03, y: -8 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className="relative overflow-hidden rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-card hover:shadow-elevated p-8 md:p-10 h-full"
+                className="relative overflow-hidden rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] shadow-card hover:shadow-elevated hover:border-white/[0.12] p-8 md:p-10 h-full"
               >
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-date-pink/5 via-date-purple/5 to-date-rose/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-500/[0.06] via-accent-600/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Floating decoration */}
                 <motion.div
@@ -219,22 +219,22 @@ export default function LandingPage() {
 
                 <div className="relative z-10">
                   <motion.div
-                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-date-pink to-date-purple flex items-center justify-center mb-6 shadow-button"
+                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center mb-6 shadow-button"
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
                   >
                     <Heart className="w-8 h-8 text-white" fill="white" />
                   </motion.div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold text-surface-900 mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-surface-100 mb-3 font-[family-name:var(--font-display)]">
                     Ask for a Date
                   </h2>
-                  <p className="text-surface-500 mb-6 leading-relaxed">
+                  <p className="text-surface-400 mb-6 leading-relaxed">
                     Create a beautiful, animated invitation to ask someone
                     special on a date. Make it memorable.
                   </p>
 
-                  <div className="inline-flex items-center gap-2 text-date-purple font-semibold group-hover:gap-3 transition-all">
+                  <div className="inline-flex items-center gap-2 text-accent-400 font-semibold group-hover:gap-3 transition-all">
                     Get started
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -261,10 +261,10 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.03, y: -8 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className="relative overflow-hidden rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-card hover:shadow-elevated p-8 md:p-10 h-full"
+                className="relative overflow-hidden rounded-3xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] shadow-card hover:shadow-elevated hover:border-white/[0.12] p-8 md:p-10 h-full"
               >
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-travel-blue/5 via-travel-cyan/5 to-travel-sky/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-travel-blue/[0.06] via-travel-cyan/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Coming soon badge */}
                 <div className="absolute top-4 right-4">
@@ -278,10 +278,10 @@ export default function LandingPage() {
                     <Plane className="w-8 h-8 text-white" />
                   </div>
 
-                  <h2 className="text-2xl md:text-3xl font-bold text-surface-900 mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold text-surface-100 mb-3 font-[family-name:var(--font-display)]">
                     Ask for a Trip
                   </h2>
-                  <p className="text-surface-500 mb-6 leading-relaxed">
+                  <p className="text-surface-400 mb-6 leading-relaxed">
                     Plan a surprise travel adventure together. Create
                     excitement with an interactive invitation.
                   </p>
@@ -304,7 +304,7 @@ export default function LandingPage() {
         transition={{ delay: 1.2 }}
         className="relative z-10 text-center py-8 mt-12"
       >
-        <p className="text-sm text-surface-400">
+        <p className="text-sm text-surface-600">
           Made with{' '}
           <motion.span
             animate={{ scale: [1, 1.3, 1] }}
@@ -332,20 +332,20 @@ export default function LandingPage() {
       >
         <div className="space-y-6">
           {/* User Details */}
-          <div className="p-4 rounded-2xl bg-surface-50 border border-surface-200/60">
-            <span className="text-xs font-semibold text-surface-400 uppercase tracking-wider">
+          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+            <span className="text-xs font-semibold text-surface-500 uppercase tracking-wider">
               Email Address
             </span>
-            <div className="flex items-center gap-2 mt-1.5 text-surface-900 font-medium">
-              <User className="w-4 h-4 text-surface-400" />
+            <div className="flex items-center gap-2 mt-1.5 text-surface-200 font-medium">
+              <User className="w-4 h-4 text-surface-500" />
               <span>{user?.email || 'Loading...'}</span>
             </div>
           </div>
 
           {/* Password Edit Form */}
           <form onSubmit={handleUpdatePassword} className="space-y-4 pt-2">
-            <div className="flex items-center gap-2 mb-2 text-surface-900 font-bold">
-              <Lock className="w-5 h-5 text-date-purple" />
+            <div className="flex items-center gap-2 mb-2 text-surface-100 font-bold">
+              <Lock className="w-5 h-5 text-accent-400" />
               <h3>Change Password</h3>
             </div>
 
@@ -368,7 +368,7 @@ export default function LandingPage() {
             )}
 
             {passwordSuccess && (
-              <p className="text-sm text-emerald-600 font-medium">{passwordSuccess}</p>
+              <p className="text-sm text-emerald-400 font-medium">{passwordSuccess}</p>
             )}
 
             <Button
@@ -383,12 +383,12 @@ export default function LandingPage() {
           </form>
 
           {/* Sign Out Action */}
-          <div className="pt-4 border-t border-surface-200/60">
+          <div className="pt-4 border-t border-white/[0.06]">
             <Button
               variant="ghost"
               fullWidth
               onClick={handleSignOut}
-              className="text-error hover:bg-red-50 hover:text-red-700 transition-colors border border-red-200/60"
+              className="text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors border border-red-500/20"
               icon={<LogOut className="w-4 h-4" />}
             >
               Sign Out

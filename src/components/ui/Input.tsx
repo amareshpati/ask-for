@@ -23,7 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="relative w-full">
         <div className="relative">
           {icon && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 z-10 pointer-events-none">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-surface-500 z-10 pointer-events-none">
               {icon}
             </div>
           )}
@@ -32,8 +32,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={inputType}
             className={`
-              peer w-full bg-surface-50 border-2 rounded-xl
-              px-4 pt-6 pb-2 text-base text-surface-900
+              peer w-full bg-white/[0.05] border-2 rounded-xl
+              px-4 pt-6 pb-2 text-base text-surface-100
               placeholder-transparent
               transition-all duration-200 ease-out
               focus:outline-none
@@ -43,8 +43,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 error
                   ? 'border-error/50 focus:border-error'
                   : isFocused
-                    ? 'border-date-purple/50 focus:border-date-purple'
-                    : 'border-surface-200 hover:border-surface-300'
+                    ? 'border-accent-500/50 focus:border-accent-500'
+                    : 'border-white/[0.08] hover:border-white/[0.15]'
               }
               ${className}
             `}
@@ -63,7 +63,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             htmlFor={inputId}
             className={`
               absolute top-4
-              text-surface-400 text-base
+              text-surface-500 text-base
               transition-all duration-200 ease-out
               pointer-events-none
               peer-focus:top-1.5 peer-focus:text-xs peer-focus:font-medium
@@ -72,7 +72,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ${
                 error
                   ? 'peer-focus:text-error'
-                  : 'peer-focus:text-date-purple'
+                  : 'peer-focus:text-accent-400'
               }
             `}
           >
@@ -83,7 +83,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-surface-400 hover:text-surface-600 focus:outline-none z-10 cursor-pointer p-1 rounded-lg hover:bg-surface-100 transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-surface-500 hover:text-surface-300 focus:outline-none z-10 cursor-pointer p-1 rounded-lg hover:bg-white/[0.06] transition-colors"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
               {showPassword ? (

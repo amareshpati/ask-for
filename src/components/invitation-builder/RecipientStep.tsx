@@ -14,7 +14,7 @@ export function RecipientStep({ value, onChange, onNext }: RecipientStepProps) {
     <div className="space-y-6">
       <div className="text-center">
         <div className="text-5xl mb-4">💝</div>
-        <h2 className="text-2xl md:text-3xl font-bold text-surface-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
           Who is this for?
         </h2>
         <p className="text-surface-500">

@@ -19,16 +19,16 @@ type SuggestionCategory = 'feature' | 'bug' | 'improvement' | 'general';
 
 const CATEGORIES: { value: SuggestionCategory; label: string; emoji: string; color: string }[] = [
   { value: 'feature', label: 'Feature Request', emoji: '✨', color: 'from-violet-500 to-purple-600' },
-  { value: 'bug', label: 'Bug Report', emoji: '🐛', color: 'from-red-500 to-rose-600' },
+  { value: 'bug', label: 'Bug Report', emoji: '🐛', color: 'from-accent-500 to-accent-600' },
   { value: 'improvement', label: 'Improvement', emoji: '🚀', color: 'from-blue-500 to-cyan-600' },
-  { value: 'general', label: 'General', emoji: '💬', color: 'from-emerald-500 to-teal-600' },
+  { value: 'general', label: 'General', emoji: '💬', color: 'from-emerald-500 to-emerald-600' },
 ];
 
 const STATUS_BADGES: Record<string, { label: string; color: string }> = {
-  pending: { label: 'Pending', color: 'bg-amber-100 text-amber-700' },
-  reviewed: { label: 'Reviewed', color: 'bg-blue-100 text-blue-700' },
-  planned: { label: 'Planned', color: 'bg-violet-100 text-violet-700' },
-  completed: { label: 'Completed', color: 'bg-emerald-100 text-emerald-700' },
+  pending: { label: 'Pending', color: 'bg-amber-500/10 text-amber-400 border border-amber-500/20' },
+  reviewed: { label: 'Reviewed', color: 'bg-blue-500/10 text-blue-400 border border-blue-500/20' },
+  planned: { label: 'Planned', color: 'bg-violet-500/10 text-violet-400 border border-violet-500/20' },
+  completed: { label: 'Completed', color: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' },
 };
 
 interface SuggestionPopupProps {
@@ -179,7 +179,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-amber-400 via-orange-500 to-rose-500 text-white shadow-lg shadow-orange-500/30 flex items-center justify-center cursor-pointer hover:shadow-xl hover:shadow-orange-500/40 transition-shadow"
+        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-accent-500 to-accent-700 text-white shadow-glow-sm flex items-center justify-center cursor-pointer hover:shadow-glow transition-shadow"
         title="Share your suggestion"
       >
         <Lightbulb className="w-6 h-6" />
@@ -198,14 +198,14 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
       >
         <div className="space-y-5">
           {/* Tabs */}
-          <div className="flex gap-1 p-1 bg-surface-100 rounded-xl">
+          <div className="flex gap-1 p-1 bg-white/[0.04] rounded-xl border border-white/[0.08]">
             <button
               onClick={() => setActiveTab('new')}
               className={`
                 flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer
                 ${activeTab === 'new'
-                  ? 'bg-white text-surface-900 shadow-sm'
-                  : 'text-surface-500 hover:text-surface-700'
+                  ? 'bg-white/[0.08] text-surface-100 shadow-sm'
+                  : 'text-surface-400 hover:text-surface-200'
                 }
               `}
             >
@@ -219,8 +219,8 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
               className={`
                 flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer
                 ${activeTab === 'history'
-                  ? 'bg-white text-surface-900 shadow-sm'
-                  : 'text-surface-500 hover:text-surface-700'
+                  ? 'bg-white/[0.08] text-surface-100 shadow-sm'
+                  : 'text-surface-400 hover:text-surface-200'
                 }
               `}
             >
@@ -228,7 +228,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                 📋
                 My Suggestions
                 {suggestions.length > 0 && (
-                  <span className="inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold bg-date-purple/10 text-date-purple rounded-full">
+                  <span className="inline-flex items-center justify-center w-5 h-5 text-[10px] font-bold bg-accent-500/10 text-accent-400 rounded-full">
                     {suggestions.length}
                   </span>
                 )}
@@ -259,17 +259,17 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                         type="button"
                         onClick={() => setCategory(cat.value)}
                         className={`
-                          flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer border-2
+                          flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer border
                           ${category === cat.value
-                            ? 'border-date-purple bg-date-purple/5 text-surface-900'
-                            : 'border-surface-200 hover:border-surface-300 text-surface-600'
+                            ? 'border-accent-500 bg-accent-500/10 text-surface-100'
+                            : 'border-white/[0.08] hover:border-white/[0.12] text-surface-400 hover:text-surface-200 bg-white/[0.02]'
                           }
                         `}
                       >
                         <span className="text-base">{cat.emoji}</span>
                         <span>{cat.label}</span>
                         {category === cat.value && (
-                          <Check className="w-3.5 h-3.5 text-date-purple ml-auto" />
+                          <Check className="w-3.5 h-3.5 text-accent-400 ml-auto" />
                         )}
                       </button>
                     ))}
@@ -294,7 +294,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                 />
 
                 {/* Character count */}
-                <p className="text-xs text-surface-400 text-right">
+                <p className="text-xs text-surface-500 text-right">
                   {description.length}/1000
                 </p>
 
@@ -305,7 +305,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="flex items-center gap-2 px-4 py-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-medium"
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium"
                     >
                       <Check className="w-4 h-4" />
                       Thanks for your suggestion! We&apos;ll review it soon 🎉
@@ -338,16 +338,16 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                 {isLoading ? (
                   <div className="space-y-3">
                     {[1, 2].map((i) => (
-                      <div key={i} className="bg-surface-50 rounded-xl h-20 animate-pulse" />
+                      <div key={i} className="bg-white/[0.04] rounded-xl h-20 animate-pulse border border-white/[0.06]" />
                     ))}
                   </div>
                 ) : suggestions.length === 0 ? (
                   <div className="text-center py-8">
                     <div className="text-4xl mb-3">💡</div>
-                    <p className="text-surface-500 text-sm font-medium">
+                    <p className="text-surface-300 text-sm font-medium">
                       No suggestions yet
                     </p>
-                    <p className="text-surface-400 text-xs mt-1">
+                    <p className="text-surface-500 text-xs mt-1">
                       Share your ideas to help us improve!
                     </p>
                   </div>
@@ -362,7 +362,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                         <motion.div
                           key={suggestion.id}
                           layout
-                          className="bg-surface-50 rounded-xl border border-surface-200/60 overflow-hidden"
+                          className="bg-white/[0.04] rounded-xl border border-white/[0.08] overflow-hidden"
                         >
                           {isEditing ? (
                             /* Edit form */
@@ -376,8 +376,8 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                                     className={`
                                       flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer border
                                       ${editCategory === cat.value
-                                        ? 'border-date-purple bg-date-purple/5 text-surface-900'
-                                        : 'border-surface-200 text-surface-600'
+                                        ? 'border-accent-500 bg-accent-500/10 text-surface-100'
+                                        : 'border-white/[0.08] hover:border-white/[0.12] text-surface-400 hover:text-surface-200 bg-white/[0.02]'
                                       }
                                     `}
                                   >
@@ -428,18 +428,18 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                                 <div className="min-w-0 flex-1">
                                   <div className="flex items-center gap-2 flex-wrap mb-1">
                                     <span className="text-sm">{catInfo?.emoji}</span>
-                                    <h4 className="text-sm font-semibold text-surface-900 truncate">
+                                    <h4 className="text-sm font-semibold text-surface-100 truncate">
                                       {suggestion.title}
                                     </h4>
                                   </div>
-                                  <p className="text-xs text-surface-500 line-clamp-2 mb-2">
+                                  <p className="text-xs text-surface-400 line-clamp-2 mb-2">
                                     {suggestion.description}
                                   </p>
                                   <div className="flex items-center gap-2 flex-wrap">
                                     <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold ${statusBadge.color}`}>
                                       {statusBadge.label}
                                     </span>
-                                    <span className="text-[10px] text-surface-400">
+                                    <span className="text-[10px] text-surface-500">
                                       {formatDate(suggestion.created_at)}
                                     </span>
                                   </div>
@@ -451,7 +451,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => startEdit(suggestion)}
-                                    className="p-1.5 rounded-lg hover:bg-surface-200 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                                    className="p-1.5 rounded-lg hover:bg-white/[0.06] text-surface-400 hover:text-surface-200 transition-colors cursor-pointer"
                                     title="Edit"
                                   >
                                     <Edit3 className="w-3.5 h-3.5" />
@@ -461,7 +461,7 @@ export function SuggestionPopup({ externalOpen, onExternalOpenChange, initialTab
                                     whileTap={{ scale: 0.9 }}
                                     onClick={() => handleDelete(suggestion.id)}
                                     disabled={deletingId === suggestion.id}
-                                    className="p-1.5 rounded-lg hover:bg-red-50 text-surface-400 hover:text-error transition-colors cursor-pointer disabled:opacity-50"
+                                    className="p-1.5 rounded-lg hover:bg-red-500/10 text-surface-400 hover:text-red-400 transition-colors cursor-pointer disabled:opacity-50"
                                     title="Delete"
                                   >
                                     <Trash2 className="w-3.5 h-3.5" />

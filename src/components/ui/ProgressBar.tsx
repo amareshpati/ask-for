@@ -23,16 +23,16 @@ export function ProgressBar({ currentStep, totalSteps, labels }: ProgressBarProp
                 scale: index === currentStep ? 1.2 : 1,
                 backgroundColor:
                   index <= currentStep
-                    ? 'oklch(0.72 0.19 350)'
-                    : 'oklch(0.93 0.006 250)',
+                    ? 'var(--color-accent-500)'
+                    : 'var(--color-surface-700)',
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className={`
                 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold
                 ${
                   index <= currentStep
-                    ? 'text-white'
-                    : 'text-surface-400'
+                    ? 'text-white shadow-glow-sm'
+                    : 'text-surface-500'
                 }
               `}
             >
@@ -45,7 +45,7 @@ export function ProgressBar({ currentStep, totalSteps, labels }: ProgressBarProp
               )}
             </motion.div>
             {labels && labels[index] && (
-              <span className="text-[10px] text-surface-400 mt-1 hidden sm:block">
+              <span className="text-[10px] text-surface-500 mt-1 hidden sm:block">
                 {labels[index]}
               </span>
             )}
@@ -54,9 +54,9 @@ export function ProgressBar({ currentStep, totalSteps, labels }: ProgressBarProp
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-1.5 bg-surface-200 rounded-full overflow-hidden">
+      <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-gradient-to-r from-date-pink to-date-purple rounded-full"
+          className="h-full bg-gradient-to-r from-accent-500 to-accent-400 rounded-full shadow-glow-sm"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}

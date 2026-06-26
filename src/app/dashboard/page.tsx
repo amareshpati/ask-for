@@ -24,9 +24,9 @@ import {
 } from '@/lib/utils';
 
 const statusConfig: Record<InvitationStatus, { label: string; color: string; icon: React.ReactNode }> = {
-  draft: { label: 'Draft', color: 'bg-surface-200 text-surface-600', icon: <Clock className="w-3.5 h-3.5" /> },
-  shared: { label: 'Shared', color: 'bg-blue-100 text-blue-700', icon: <Share2 className="w-3.5 h-3.5" /> },
-  responded: { label: 'Responded', color: 'bg-emerald-100 text-emerald-700', icon: <MessageCircle className="w-3.5 h-3.5" /> },
+  draft: { label: 'Draft', color: 'bg-white/[0.06] text-surface-400', icon: <Clock className="w-3.5 h-3.5" /> },
+  shared: { label: 'Shared', color: 'bg-blue-500/15 text-blue-400', icon: <Share2 className="w-3.5 h-3.5" /> },
+  responded: { label: 'Responded', color: 'bg-emerald-500/15 text-emerald-400', icon: <MessageCircle className="w-3.5 h-3.5" /> },
 };
 
 export default function DashboardPage() {
@@ -183,14 +183,14 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-dvh relative">
+    <main className="min-h-dvh relative" data-theme={dashboardTheme}>
       <AnimatedBackground theme={dashboardTheme} intensity={dashboardTheme === 'date' ? 1.0 : 0.5} />
 
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12 border-b border-surface-200/50 bg-white/40 backdrop-blur-xl">
+      <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12 border-b border-white/[0.06] bg-surface-950/60 backdrop-blur-xl">
         <Link href="/" className="flex items-center gap-2 hover:opacity-85 transition-opacity">
-          <Sparkles className="w-6 h-6 text-date-purple" />
-          <span className="text-xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-6 h-6 text-accent-400" />
+          <span className="text-xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
@@ -214,7 +214,7 @@ export default function DashboardPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsProfileOpen(true)}
-            className="p-2 rounded-xl text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-surface-500 hover:text-surface-300 hover:bg-white/[0.06] transition-colors cursor-pointer"
             title="Profile Settings"
           >
             <User className="w-5 h-5" />
@@ -223,7 +223,7 @@ export default function DashboardPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleSignOut}
-            className="p-2 rounded-xl text-surface-400 hover:text-surface-600 hover:bg-surface-100 transition-colors cursor-pointer"
+            className="p-2 rounded-xl text-surface-500 hover:text-surface-300 hover:bg-white/[0.06] transition-colors cursor-pointer"
             title="Sign Out"
           >
             <LogOut className="w-5 h-5" />
@@ -239,7 +239,7 @@ export default function DashboardPage() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-3xl md:text-4xl font-black tracking-tight text-surface-900 mb-2">
+          <h1 className="text-3xl md:text-4xl font-black tracking-tight text-surface-100 mb-2 font-[family-name:var(--font-display)]">
             {dashboardTheme === 'date' ? 'Date Dashboard' : 'Travel Dashboard'}
           </h1>
           <p className="text-surface-500">
@@ -250,15 +250,15 @@ export default function DashboardPage() {
         </motion.div>
 
         {/* Dashboard Tabs */}
-        <div className="flex gap-2 p-1 bg-white/60 backdrop-blur-md rounded-2xl border border-surface-200/50 max-w-xs sm:max-w-sm mb-8 shadow-sm">
+        <div className="flex gap-2 p-1 bg-white/[0.04] backdrop-blur-md rounded-2xl border border-white/[0.06] max-w-xs sm:max-w-sm mb-8">
           <button
             onClick={() => setDashboardTheme('date')}
             className={`
               flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all cursor-pointer
               ${
                 dashboardTheme === 'date'
-                  ? 'bg-white text-date-purple shadow-sm'
-                  : 'text-surface-500 hover:text-surface-800'
+                  ? 'bg-white/[0.08] text-accent-400 shadow-glow-sm'
+                  : 'text-surface-500 hover:text-surface-300'
               }
             `}
           >
@@ -271,8 +271,8 @@ export default function DashboardPage() {
               flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all cursor-pointer
               ${
                 dashboardTheme === 'travel'
-                  ? 'bg-white text-travel-blue shadow-sm'
-                  : 'text-surface-500 hover:text-surface-800'
+                  ? 'bg-white/[0.08] text-travel-blue shadow-sm'
+                  : 'text-surface-500 hover:text-surface-300'
               }
             `}
           >
@@ -287,7 +287,7 @@ export default function DashboardPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-white/60 rounded-2xl h-32 animate-pulse border border-surface-200/50"
+                className="bg-white/[0.04] rounded-2xl h-32 animate-pulse border border-white/[0.06]"
               />
             ))}
           </div>
@@ -307,7 +307,7 @@ export default function DashboardPage() {
             >
               {dashboardTheme === 'date' ? '💌' : '✈️'}
             </motion.div>
-            <h2 className="text-xl font-bold text-surface-900 mb-2">
+            <h2 className="text-xl font-bold text-surface-200 mb-2 font-[family-name:var(--font-display)]">
               {dashboardTheme === 'date' ? 'No date invitations yet' : 'No travel invitations yet'}
             </h2>
             <p className="text-surface-500 mb-6">
@@ -349,17 +349,17 @@ export default function DashboardPage() {
                   exit={{ opacity: 0, x: -100 }}
                   transition={{ delay: index * 0.05, duration: 0.4 }}
                   layout
-                  className="bg-white/80 backdrop-blur-xl border border-surface-200/60 rounded-2xl shadow-card hover:shadow-elevated transition-shadow overflow-hidden"
+                  className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-card hover:shadow-elevated hover:border-white/[0.12] transition-all overflow-hidden"
                 >
                   {/* Main row */}
                   <div className="p-5 sm:p-6">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4 min-w-0 flex-1">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-date-pink to-date-purple flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-500 to-accent-700 flex items-center justify-center flex-shrink-0 shadow-glow-sm">
                           <Heart className="w-5 h-5 text-white" fill="white" />
                         </div>
                         <div className="min-w-0">
-                          <h3 className="font-semibold text-surface-900 truncate">
+                          <h3 className="font-semibold text-surface-100 truncate">
                             {inv.recipient_name}
                           </h3>
                           <p className="text-sm text-surface-500 mt-0.5 truncate">
@@ -373,10 +373,10 @@ export default function DashboardPage() {
                             {response && (
                               <span className="text-sm">
                                 {getResponseEmoji(response.response)}{' '}
-                                <span className="text-surface-500 capitalize">{response.response}</span>
+                                <span className="text-surface-400 capitalize">{response.response}</span>
                               </span>
                             )}
-                            <span className="text-xs text-surface-400">
+                            <span className="text-xs text-surface-600">
                               {formatDateTime(inv.created_at)}
                             </span>
                           </div>
@@ -391,11 +391,11 @@ export default function DashboardPage() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => handleCopyLink(inv.unique_slug, inv.id)}
-                              className="p-2 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                              className="p-2 rounded-lg hover:bg-white/[0.06] text-surface-500 hover:text-surface-300 transition-colors cursor-pointer"
                               title="Copy link"
                             >
                               {copiedId === inv.id ? (
-                                <Check className="w-4 h-4 text-success" />
+                                <Check className="w-4 h-4 text-emerald-400" />
                               ) : (
                                 <Copy className="w-4 h-4" />
                               )}
@@ -404,7 +404,7 @@ export default function DashboardPage() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => handleShare(inv)}
-                              className="p-2 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                              className="p-2 rounded-lg hover:bg-white/[0.06] text-surface-500 hover:text-surface-300 transition-colors cursor-pointer"
                               title="Share"
                             >
                               <Share2 className="w-4 h-4" />
@@ -413,7 +413,7 @@ export default function DashboardPage() {
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
                               onClick={() => router.push(`/dashboard/edit/${inv.id}`)}
-                              className="p-2 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                              className="p-2 rounded-lg hover:bg-white/[0.06] text-surface-500 hover:text-surface-300 transition-colors cursor-pointer"
                               title="Edit"
                             >
                               <Edit className="w-4 h-4" />
@@ -424,7 +424,7 @@ export default function DashboardPage() {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => setExpandedId(isExpanded ? null : inv.id)}
-                          className="p-2 rounded-lg hover:bg-surface-100 text-surface-400 hover:text-surface-600 transition-colors cursor-pointer"
+                          className="p-2 rounded-lg hover:bg-white/[0.06] text-surface-500 hover:text-surface-300 transition-colors cursor-pointer"
                           title="Details"
                         >
                           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
@@ -436,7 +436,7 @@ export default function DashboardPage() {
                           whileTap={{ scale: 0.9 }}
                           onClick={() => handleDelete(inv.id)}
                           disabled={deletingId === inv.id}
-                          className="p-2 rounded-lg hover:bg-red-50 text-surface-400 hover:text-error transition-colors cursor-pointer disabled:opacity-50"
+                          className="p-2 rounded-lg hover:bg-red-500/10 text-surface-500 hover:text-red-400 transition-colors cursor-pointer disabled:opacity-50"
                           title="Delete"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -455,54 +455,54 @@ export default function DashboardPage() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-surface-100">
+                        <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-white/[0.06]">
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                             <div>
-                              <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Welcome Message</span>
-                              <p className="text-sm text-surface-700 mt-1">{inv.welcome_message}</p>
+                              <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Welcome Message</span>
+                              <p className="text-sm text-surface-300 mt-1">{inv.welcome_message}</p>
                             </div>
                             <div>
-                              <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Food Options</span>
-                              <p className="text-sm text-surface-700 mt-1">{formatOptions(inv.favourite_food)}</p>
+                              <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Food Options</span>
+                              <p className="text-sm text-surface-300 mt-1">{formatOptions(inv.favourite_food)}</p>
                             </div>
                             <div>
-                              <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Location Options</span>
-                              <p className="text-sm text-surface-700 mt-1">{formatOptions(inv.favourite_location)}</p>
+                              <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Location Options</span>
+                              <p className="text-sm text-surface-300 mt-1">{formatOptions(inv.favourite_location)}</p>
                             </div>
                             {response && (
                               <>
                                 <div>
-                                  <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Response</span>
-                                  <p className="text-sm text-surface-700 mt-1 capitalize">
+                                  <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Response</span>
+                                  <p className="text-sm text-surface-300 mt-1 capitalize">
                                     {getResponseEmoji(response.response)} {response.response}
                                   </p>
                                 </div>
                                 <div>
-                                  <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Responded At</span>
-                                  <p className="text-sm text-surface-700 mt-1">
+                                  <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Responded At</span>
+                                  <p className="text-sm text-surface-300 mt-1">
                                     {formatDateTime(response.responded_at)}
                                   </p>
                                 </div>
                                 {response.selected_date && (
                                   <div>
-                                    <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Selected Date</span>
-                                    <p className="text-sm text-surface-700 mt-1">
+                                    <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Selected Date</span>
+                                    <p className="text-sm text-surface-300 mt-1">
                                       {response.selected_date} — {response.selected_time_slot}
                                     </p>
                                   </div>
                                 )}
                                 {response.selected_food && (
                                   <div>
-                                    <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Chosen Food</span>
-                                    <p className="text-sm text-surface-700 mt-1">
+                                    <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Chosen Food</span>
+                                    <p className="text-sm text-surface-300 mt-1">
                                       {response.selected_food}
                                     </p>
                                   </div>
                                 )}
                                 {response.selected_location && (
                                   <div>
-                                    <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">Chosen Location</span>
-                                    <p className="text-sm text-surface-700 mt-1">
+                                    <span className="text-xs font-medium text-surface-500 uppercase tracking-wider">Chosen Location</span>
+                                    <p className="text-sm text-surface-300 mt-1">
                                       {response.selected_location}
                                     </p>
                                   </div>
@@ -512,12 +512,12 @@ export default function DashboardPage() {
                           </div>
 
                           {/* Preview link */}
-                          <div className="mt-4 pt-4 border-t border-surface-100">
+                          <div className="mt-4 pt-4 border-t border-white/[0.06]">
                             <a
                               href={`/invite/${inv.unique_slug}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm text-date-purple hover:underline font-medium"
+                              className="inline-flex items-center gap-2 text-sm text-accent-400 hover:underline font-medium"
                             >
                               <Eye className="w-4 h-4" />
                               Preview Invitation
@@ -565,20 +565,20 @@ export default function DashboardPage() {
       >
         <div className="space-y-6">
           {/* User Details */}
-          <div className="p-4 rounded-2xl bg-surface-50 border border-surface-200/60">
-            <span className="text-xs font-semibold text-surface-400 uppercase tracking-wider">
+          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/[0.08]">
+            <span className="text-xs font-semibold text-surface-500 uppercase tracking-wider">
               Email Address
             </span>
-            <div className="flex items-center gap-2 mt-1.5 text-surface-900 font-medium">
-              <User className="w-4 h-4 text-surface-400" />
+            <div className="flex items-center gap-2 mt-1.5 text-surface-200 font-medium">
+              <User className="w-4 h-4 text-surface-500" />
               <span>{user?.email || 'Loading...'}</span>
             </div>
           </div>
 
           {/* Password Edit Form */}
           <form onSubmit={handleUpdatePassword} className="space-y-4 pt-2">
-            <div className="flex items-center gap-2 mb-2 text-surface-900 font-bold">
-              <Lock className="w-5 h-5 text-date-purple" />
+            <div className="flex items-center gap-2 mb-2 text-surface-100 font-bold">
+              <Lock className="w-5 h-5 text-accent-400" />
               <h3>Change Password</h3>
             </div>
             
@@ -601,7 +601,7 @@ export default function DashboardPage() {
             )}
 
             {passwordSuccess && (
-              <p className="text-sm text-emerald-600 font-medium">{passwordSuccess}</p>
+              <p className="text-sm text-emerald-400 font-medium">{passwordSuccess}</p>
             )}
 
             <Button
@@ -616,19 +616,19 @@ export default function DashboardPage() {
           </form>
 
           {/* My Suggestions */}
-          <div className="pt-4 border-t border-surface-200/60">
+          <div className="pt-4 border-t border-white/[0.06]">
             <button
               onClick={() => {
                 setIsProfileOpen(false);
                 setIsSuggestionOpen(true);
               }}
-              className="w-full flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 hover:border-amber-300 transition-all cursor-pointer group"
+              className="w-full flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/30 transition-all cursor-pointer group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 shadow-sm">
                 <Lightbulb className="w-4.5 h-4.5 text-white" />
               </div>
               <div className="text-left">
-                <span className="text-sm font-semibold text-surface-900 group-hover:text-amber-700 transition-colors">
+                <span className="text-sm font-semibold text-surface-200 group-hover:text-amber-400 transition-colors">
                   My Suggestions
                 </span>
                 <p className="text-xs text-surface-500 mt-0.5">
@@ -639,12 +639,12 @@ export default function DashboardPage() {
           </div>
 
           {/* Sign Out Action */}
-          <div className="pt-4 border-t border-surface-200/60">
+          <div className="pt-4 border-t border-white/[0.06]">
             <Button
               variant="ghost"
               fullWidth
               onClick={handleSignOut}
-              className="text-error hover:bg-red-50 hover:text-red-700 transition-colors border border-red-200/60"
+              className="text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors border border-red-500/20"
               icon={<LogOut className="w-4 h-4" />}
             >
               Sign Out

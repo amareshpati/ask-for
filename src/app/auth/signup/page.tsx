@@ -61,14 +61,14 @@ export default function SignupPage() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
-          <Sparkles className="w-7 h-7 text-date-purple" />
-          <span className="text-2xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-7 h-7 text-accent-400" />
+          <span className="text-2xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
 
         {/* Card */}
-        <div className="bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-elevated p-8">
+        <div className="bg-surface-900/80 backdrop-blur-2xl border border-white/[0.08] rounded-3xl shadow-elevated p-8">
           {success ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -76,19 +76,19 @@ export default function SignupPage() {
               className="text-center py-6"
             >
               <div className="text-5xl mb-4">📨</div>
-              <h2 className="text-xl font-bold text-surface-900 mb-2">
+              <h2 className="text-xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
                 Check your email
               </h2>
-              <p className="text-surface-500 text-sm mb-6">
+              <p className="text-surface-400 text-sm mb-6">
                 We sent you a confirmation link. Click it to activate your
-                account. If not found, please check your <strong>spam/junk folder</strong>. For support, contact{' '}
-                <a href="mailto:askfor@devvloper.in" className="text-date-purple hover:underline font-medium">
+                account. If not found, please check your <strong className="text-surface-300">spam/junk folder</strong>. For support, contact{' '}
+                <a href="mailto:askfor@devvloper.in" className="text-accent-400 hover:underline font-medium">
                   askfor@devvloper.in
                 </a>.
               </p>
               <Link
                 href="/auth/login"
-                className="text-date-purple font-semibold hover:underline text-sm"
+                className="text-accent-400 font-semibold hover:underline text-sm"
               >
                 Back to login
               </Link>
@@ -96,7 +96,7 @@ export default function SignupPage() {
           ) : (
             <>
               <div className="text-center mb-8">
-                <h1 className="text-2xl font-bold text-surface-900 mb-2">
+                <h1 className="text-2xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
                   Create an account
                 </h1>
                 <p className="text-surface-500 text-sm">
@@ -140,7 +140,7 @@ export default function SignupPage() {
                   <motion.p
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-sm text-error text-center bg-error/5 rounded-lg py-2 px-3"
+                    className="text-sm text-error text-center bg-error/10 rounded-lg py-2 px-3"
                   >
                     {error}
                   </motion.p>
@@ -160,7 +160,7 @@ export default function SignupPage() {
                 Already have an account?{' '}
                 <Link
                   href="/auth/login"
-                  className="text-date-purple font-semibold hover:underline"
+                  className="text-accent-400 font-semibold hover:underline"
                 >
                   Sign in
                 </Link>

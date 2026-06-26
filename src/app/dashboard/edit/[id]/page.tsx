@@ -198,7 +198,7 @@ export default function EditInvitationPage({ params }: PageProps) {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => router.push('/dashboard')}
-          className="flex items-center gap-2 text-surface-600 hover:text-surface-900 transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-surface-400 hover:text-surface-200 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-5 h-5" />
           <span className="text-sm font-medium hidden sm:inline">Dashboard</span>
@@ -206,7 +206,7 @@ export default function EditInvitationPage({ params }: PageProps) {
 
         <div className="flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-date-purple" />
-          <span className="text-sm font-semibold text-surface-700">
+          <span className="text-sm font-semibold text-surface-300">
             Edit Invitation
           </span>
         </div>

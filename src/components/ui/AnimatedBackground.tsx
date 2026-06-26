@@ -21,30 +21,30 @@ interface FloatingElement {
 const themes = {
   date: {
     colors: [
-      'oklch(0.68 0.18 15 / 0.18)',  // Royal Red
-      'oklch(0.62 0.22 285 / 0.20)', // Rich Lavender Purple
-      'oklch(0.58 0.24 305 / 0.15)', // Deep Purple/Magenta
-      'oklch(0.70 0.16 270 / 0.12)', // Soft Lavender-Blue/Indigo
+      'oklch(0.42 0.18 350 / 0.16)',    // Wine rose
+      'oklch(0.38 0.16 320 / 0.15)',    // Violet/plum
+      'oklch(0.45 0.18 340 / 0.12)',    // Soft fuchsia
+      'oklch(0.48 0.15 15 / 0.10)',     // Ruby red glow
     ],
-    gradient: 'from-royal-red-light via-lavender-light to-lavender-mid/60',
+    gradient: 'from-surface-950 via-royal-red-mid to-surface-950',
   },
   travel: {
     colors: [
-      'oklch(0.6 0.18 250 / 0.15)',
-      'oklch(0.7 0.15 200 / 0.12)',
-      'oklch(0.75 0.12 220 / 0.1)',
-      'oklch(0.5 0.2 270 / 0.08)',
+      'oklch(0.35 0.15 250 / 0.15)',
+      'oklch(0.40 0.12 220 / 0.12)',
+      'oklch(0.45 0.10 200 / 0.10)',
+      'oklch(0.30 0.18 270 / 0.08)',
     ],
-    gradient: 'from-blue-50 via-cyan-50/50 to-sky-50',
+    gradient: 'from-surface-950 via-[oklch(0.12_0.02_250)] to-surface-950',
   },
   neutral: {
     colors: [
-      'oklch(0.93 0.006 250 / 0.2)',
-      'oklch(0.87 0.008 250 / 0.15)',
-      'oklch(0.97 0.004 250 / 0.1)',
-      'oklch(0.7 0.015 250 / 0.05)',
+      'oklch(0.20 0.01 260 / 0.15)',
+      'oklch(0.18 0.008 260 / 0.12)',
+      'oklch(0.22 0.006 260 / 0.1)',
+      'oklch(0.15 0.005 260 / 0.08)',
     ],
-    gradient: 'from-surface-50 via-white to-surface-100',
+    gradient: 'from-surface-950 via-surface-900 to-surface-950',
   },
 };
 
@@ -75,15 +75,15 @@ export function AnimatedBackground({
         ? ['✈️', '☁️', '🌍', '🗺️', '🏝️', '🎈']
         : ['✨', '🎈', '✨', '🌸'];
 
-    const count = 15;
+    const count = 12;
     const generated = Array.from({ length: count }, (_, i) => ({
       id: i,
       emoji: emojiList[Math.floor(Math.random() * emojiList.length)],
       left: `${5 + Math.random() * 90}%`,
       delay: Math.random() * 15,
-      duration: 15 + Math.random() * 15, // float time 15s to 30s
-      scale: 0.6 + Math.random() * 0.7,
-      opacity: 0.08 + Math.random() * 0.12,
+      duration: 18 + Math.random() * 15,
+      scale: 0.5 + Math.random() * 0.5,
+      opacity: 0.04 + Math.random() * 0.08,
     }));
     setParticles(generated);
 
@@ -114,15 +114,24 @@ export function AnimatedBackground({
         transition={{ duration: 0.8 }}
       />
 
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `radial-gradient(oklch(1 0 0 / 0.15) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
       {/* Animated orbs */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full blur-[100px]"
+        className="absolute w-[600px] h-[600px] rounded-full blur-[120px]"
         style={{
           background: currentTheme.colors[0],
           x: x1,
           y: y1,
-          top: '10%',
-          left: '20%',
+          top: '5%',
+          left: '15%',
         }}
         animate={{
           scale: [1, 1.2, 1],
@@ -134,7 +143,7 @@ export function AnimatedBackground({
         }}
       />
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full blur-[100px]"
+        className="absolute w-[500px] h-[500px] rounded-full blur-[120px]"
         style={{
           background: currentTheme.colors[1],
           x: x2,
@@ -152,10 +161,10 @@ export function AnimatedBackground({
         }}
       />
       <motion.div
-        className="absolute w-[400px] h-[400px] rounded-full blur-[80px]"
+        className="absolute w-[400px] h-[400px] rounded-full blur-[100px]"
         style={{
           background: currentTheme.colors[2],
-          top: '60%',
+          top: '65%',
           left: '50%',
         }}
         animate={{

@@ -77,16 +77,16 @@ export default function LoginPage() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
-          <Sparkles className="w-7 h-7 text-date-purple" />
-          <span className="text-2xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-7 h-7 text-accent-400" />
+          <span className="text-2xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
 
         {/* Card */}
-        <div className="bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-elevated p-8">
+        <div className="bg-surface-900/80 backdrop-blur-2xl border border-white/[0.08] rounded-3xl shadow-elevated p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-surface-900 mb-2">
+            <h1 className="text-2xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
               Welcome back
             </h1>
             <p className="text-surface-500 text-sm">
@@ -110,10 +110,10 @@ export default function LoginPage() {
           {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-surface-200" />
+              <div className="w-full border-t border-white/[0.08]" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white/80 px-4 text-surface-400 font-medium">
+              <span className="bg-surface-900/80 px-4 text-surface-500 font-medium">
                 or continue with email
               </span>
             </div>
@@ -144,7 +144,7 @@ export default function LoginPage() {
             <div className="flex justify-end">
               <Link
                 href="/auth/forgot-password"
-                className="text-xs font-semibold text-date-purple hover:underline"
+                className="text-xs font-semibold text-accent-400 hover:underline"
               >
                 Forgot password?
               </Link>
@@ -154,7 +154,7 @@ export default function LoginPage() {
               <motion.p
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-sm text-error text-center bg-error/5 rounded-lg py-2 px-3"
+                className="text-sm text-error text-center bg-error/10 rounded-lg py-2 px-3"
               >
                 {error}
               </motion.p>
@@ -174,7 +174,7 @@ export default function LoginPage() {
             Don&apos;t have an account?{' '}
             <Link
               href="/auth/signup"
-              className="text-date-purple font-semibold hover:underline"
+              className="text-accent-400 font-semibold hover:underline"
             >
               Sign up
             </Link>

@@ -406,7 +406,7 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
               <PlayfulButton
                 onClick={() => submitResponse('maybe')}
                 dodgeCount={4}
-                className="w-full px-8 py-4 rounded-2xl bg-amber-100 text-amber-800 font-semibold text-lg hover:bg-amber-200 transition-colors border border-amber-200"
+                className="w-full px-8 py-4 rounded-2xl bg-amber-500/10 text-amber-400 font-semibold text-lg hover:bg-amber-500/20 transition-colors border border-amber-500/25 cursor-pointer animate-pulse-soft"
               >
                 🤔 Maybe Later
               </PlayfulButton>
@@ -415,7 +415,7 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
               <PlayfulButton
                 onClick={() => submitResponse('no')}
                 dodgeCount={6}
-                className="w-full px-8 py-4 rounded-2xl bg-surface-100 text-surface-600 font-semibold text-lg hover:bg-surface-200 transition-colors border border-surface-200"
+                className="w-full px-8 py-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] text-surface-300 font-semibold text-lg transition-colors border border-white/[0.08] cursor-pointer"
               >
                 ❌ No
               </PlayfulButton>
@@ -443,11 +443,11 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-4 border border-surface-200/60 shadow-card max-h-64 overflow-y-auto">
+            <div className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-4 border border-white/[0.06] shadow-card max-h-64 overflow-y-auto">
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                 {!mounted ? (
                   Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-surface-50 border border-surface-200 animate-pulse h-16" />
+                    <div key={i} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] animate-pulse h-16" />
                   ))
                 ) : (
                   calendarDates.slice(0, 30).map((date) => {
@@ -464,7 +464,7 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
                           ${
                             isSelected
                               ? 'bg-gradient-to-br from-date-pink to-date-purple text-white shadow-button'
-                              : 'bg-surface-50 hover:bg-surface-100 text-surface-700 border border-surface-200'
+                              : 'bg-white/[0.03] hover:bg-white/[0.08] text-surface-300 border border-white/[0.06]'
                           }
                         `}
                       >
@@ -535,7 +535,7 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
                       ${
                         isSelected
                           ? 'bg-gradient-to-br from-date-pink to-date-purple text-white shadow-button'
-                          : 'bg-white/80 hover:bg-white border border-surface-200/60 text-surface-700'
+                          : 'bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] text-surface-300'
                       }
                     `}
                   >
@@ -588,7 +588,7 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-surface-200/60 shadow-card space-y-4">
+            <div className="bg-white/[0.03] backdrop-blur-xl rounded-2xl p-6 border border-white/[0.06] shadow-card space-y-4">
               {[
                 { emoji: '🍽️', label: 'Your Food Choices', value: selectedFoods.join(', ') },
                 { emoji: '📍', label: 'Your Location Choices', value: selectedLocations.join(', ') },
@@ -726,8 +726,8 @@ export function InvitationJourney({ invitation }: InvitationJourneyProps) {
   };
 
   return (
-    <main className="min-h-dvh relative flex items-center justify-center px-6 py-12">
-      <AnimatedBackground theme="date" intensity={1.2} />
+    <main className="min-h-dvh relative flex items-center justify-center px-6 py-12 theme-recipient" data-theme={invitation.type}>
+      <AnimatedBackground theme={invitation.type} intensity={1.2} />
       <Confetti trigger={showConfetti} />
 
       <div className="relative z-10 w-full max-w-lg">

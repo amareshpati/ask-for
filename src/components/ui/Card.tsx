@@ -10,11 +10,11 @@ interface CardProps extends Omit<HTMLMotionProps<'div'>, 'ref' | 'children'> {
 }
 
 const variantClasses = {
-  default: 'bg-white border border-surface-200 shadow-card',
-  glass: 'glass shadow-glass',
-  elevated: 'bg-white shadow-elevated',
+  default: 'bg-white/[0.04] border border-white/[0.08] shadow-card',
+  glass: 'glass-premium',
+  elevated: 'bg-white/[0.05] border border-white/[0.08] shadow-elevated',
   interactive:
-    'bg-white border border-surface-200 shadow-card hover:shadow-elevated hover:border-surface-300 cursor-pointer',
+    'bg-white/[0.04] border border-white/[0.08] shadow-card hover:shadow-elevated hover:border-white/[0.12] hover:bg-white/[0.06] cursor-pointer',
 };
 
 const paddingClasses = {

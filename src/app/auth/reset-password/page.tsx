@@ -84,16 +84,16 @@ export default function ResetPasswordPage() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
-          <Sparkles className="w-7 h-7 text-date-purple" />
-          <span className="text-2xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-7 h-7 text-accent-400" />
+          <span className="text-2xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
 
         {/* Card */}
-        <div className="bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-elevated p-8">
+        <div className="bg-surface-900/80 backdrop-blur-2xl border border-white/[0.08] rounded-3xl shadow-elevated p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-surface-900 mb-2">
+            <h1 className="text-2xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
               Reset Password
             </h1>
             <p className="text-surface-500 text-sm">
@@ -103,10 +103,10 @@ export default function ResetPasswordPage() {
 
           {success ? (
             <div className="space-y-6 text-center">
-              <div className="flex justify-center text-emerald-500">
+              <div className="flex justify-center text-emerald-400">
                 <CheckCircle className="w-12 h-12" />
               </div>
-              <div className="p-4 bg-emerald-50 text-emerald-800 rounded-2xl border border-emerald-100 text-sm font-medium leading-relaxed">
+              <div className="p-4 bg-emerald-500/10 text-emerald-300 rounded-2xl border border-emerald-500/20 text-sm font-medium leading-relaxed">
                 {success}
               </div>
               <Button
@@ -119,7 +119,7 @@ export default function ResetPasswordPage() {
             </div>
           ) : isSessionValid === false ? (
             <div className="space-y-6 text-center">
-              <div className="p-4 bg-red-50 text-error rounded-2xl border border-red-100 text-sm font-medium leading-relaxed">
+              <div className="p-4 bg-red-500/10 text-red-300 rounded-2xl border border-red-500/20 text-sm font-medium leading-relaxed">
                 {error}
               </div>
               <Button
@@ -131,7 +131,7 @@ export default function ResetPasswordPage() {
               </Button>
             </div>
           ) : isSessionValid === null ? (
-            <div className="py-8 text-center text-surface-400 font-medium animate-pulse">
+            <div className="py-8 text-center text-surface-500 font-medium animate-pulse">
               Verifying security session...
             </div>
           ) : (
@@ -162,7 +162,7 @@ export default function ResetPasswordPage() {
                 <motion.p
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-error text-center bg-error/5 rounded-lg py-2 px-3 font-medium"
+                  className="text-sm text-error text-center bg-error/10 rounded-lg py-2 px-3 font-medium"
                 >
                   {error}
                 </motion.p>

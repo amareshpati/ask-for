@@ -21,8 +21,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             id={inputId}
             rows={4}
             className={`
-              peer w-full bg-surface-50 border-2 rounded-xl
-              px-4 pt-6 pb-3 text-base text-surface-900
+              peer w-full bg-white/[0.05] border-2 rounded-xl
+              px-4 pt-6 pb-3 text-base text-surface-100
               placeholder-transparent resize-none
               transition-all duration-200 ease-out
               focus:outline-none
@@ -30,8 +30,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 error
                   ? 'border-error/50 focus:border-error'
                   : isFocused
-                    ? 'border-date-purple/50 focus:border-date-purple'
-                    : 'border-surface-200 hover:border-surface-300'
+                    ? 'border-accent-500/50 focus:border-accent-500'
+                    : 'border-white/[0.08] hover:border-white/[0.15]'
               }
               ${className}
             `}
@@ -50,7 +50,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             htmlFor={inputId}
             className={`
               absolute left-4 top-4
-              text-surface-400 text-base
+              text-surface-500 text-base
               transition-all duration-200 ease-out
               pointer-events-none
               peer-focus:top-1.5 peer-focus:text-xs peer-focus:font-medium
@@ -58,7 +58,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               ${
                 error
                   ? 'peer-focus:text-error'
-                  : 'peer-focus:text-date-purple'
+                  : 'peer-focus:text-accent-400'
               }
             `}
           >

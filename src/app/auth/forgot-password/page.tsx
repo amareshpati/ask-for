@@ -51,16 +51,16 @@ export default function ForgotPasswordPage() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
-          <Sparkles className="w-7 h-7 text-date-purple" />
-          <span className="text-2xl font-bold tracking-tight text-surface-900">
+          <Sparkles className="w-7 h-7 text-accent-400" />
+          <span className="text-2xl font-bold tracking-tight text-surface-100 font-[family-name:var(--font-display)]">
             AskFor
           </span>
         </Link>
 
         {/* Card */}
-        <div className="bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-elevated p-8">
+        <div className="bg-surface-900/80 backdrop-blur-2xl border border-white/[0.08] rounded-3xl shadow-elevated p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-surface-900 mb-2">
+            <h1 className="text-2xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
               Forgot Password
             </h1>
             <p className="text-surface-500 text-sm">
@@ -70,19 +70,19 @@ export default function ForgotPasswordPage() {
 
           {success ? (
             <div className="space-y-6 text-center">
-              <div className="p-4 bg-emerald-50 text-emerald-800 rounded-2xl border border-emerald-100 text-sm font-medium leading-relaxed">
+              <div className="p-4 bg-emerald-500/10 text-emerald-300 rounded-2xl border border-emerald-500/20 text-sm font-medium leading-relaxed">
                 {success}
-                <div className="mt-2 text-xs text-emerald-600">
+                <div className="mt-2 text-xs text-emerald-400/80">
                   If not found, please check your <strong>spam/junk folder</strong>.
                 </div>
-                <div className="mt-2 text-xs text-emerald-600">
+                <div className="mt-2 text-xs text-emerald-400/80">
                   For support, contact{' '}
                   <a href="mailto:askfor@devvloper.in" className="underline font-semibold">
                     askfor@devvloper.in
                   </a>
                 </div>
               </div>
-              <Link href="/auth/login" className="inline-flex items-center gap-2 text-date-purple hover:underline font-semibold text-sm">
+              <Link href="/auth/login" className="inline-flex items-center gap-2 text-accent-400 hover:underline font-semibold text-sm">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Sign In
               </Link>
@@ -104,7 +104,7 @@ export default function ForgotPasswordPage() {
                 <motion.p
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-sm text-error text-center bg-error/5 rounded-lg py-2 px-3 font-medium"
+                  className="text-sm text-error text-center bg-error/10 rounded-lg py-2 px-3 font-medium"
                 >
                   {error}
                 </motion.p>
@@ -121,7 +121,7 @@ export default function ForgotPasswordPage() {
                 </Button>
 
                 <div className="text-center">
-                  <Link href="/auth/login" className="inline-flex items-center gap-2 text-surface-500 hover:text-surface-800 transition-colors text-sm font-semibold">
+                  <Link href="/auth/login" className="inline-flex items-center gap-2 text-surface-500 hover:text-surface-300 transition-colors text-sm font-semibold">
                     <ArrowLeft className="w-4 h-4" />
                     Back to Sign In
                   </Link>

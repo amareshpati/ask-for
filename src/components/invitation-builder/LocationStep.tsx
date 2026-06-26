@@ -66,7 +66,7 @@ export function LocationStep({ value, onChange }: LocationStepProps) {
     <div className="space-y-6">
       <div className="text-center">
         <div className="text-5xl mb-4">📍</div>
-        <h2 className="text-2xl md:text-3xl font-bold text-surface-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
           Location Options
         </h2>
         <p className="text-surface-500">
@@ -89,7 +89,7 @@ export function LocationStep({ value, onChange }: LocationStepProps) {
         </div>
         <button
           type="submit"
-          className="flex h-[46px] w-[46px] items-center justify-center rounded-xl bg-gradient-to-br from-date-pink to-date-purple text-white shadow-button hover:opacity-90 transition-opacity cursor-pointer flex-shrink-0 mb-[1px]"
+          className="flex h-[46px] w-[46px] items-center justify-center rounded-xl bg-gradient-to-br from-accent-500 to-accent-600 text-white shadow-button hover:opacity-90 transition-opacity cursor-pointer flex-shrink-0 mb-[1px]"
           title="Add option"
         >
           <Plus className="w-5 h-5" />
@@ -101,7 +101,7 @@ export function LocationStep({ value, onChange }: LocationStepProps) {
       )}
 
       {/* Options grid */}
-      <div className="flex flex-wrap gap-2 justify-center max-w-xl mx-auto p-4 bg-white/40 backdrop-blur-md rounded-2xl border border-surface-200/50 shadow-inner">
+      <div className="flex flex-wrap gap-2 justify-center max-w-xl mx-auto p-4 bg-white/[0.04] backdrop-blur-md rounded-2xl border border-white/[0.06]">
         <AnimatePresence>
           {activeOptions.map((location) => (
             <motion.div
@@ -109,14 +109,14 @@ export function LocationStep({ value, onChange }: LocationStepProps) {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-date-pink/10 to-date-purple/10 text-date-purple border border-date-purple/30 shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-accent-500/10 text-accent-400 border border-accent-500/20 shadow-sm"
             >
               {LOCATION_EMOJIS[location] && <span className="text-base">{LOCATION_EMOJIS[location]}</span>}
               <span>{location}</span>
               <button
                 type="button"
                 onClick={() => handleRemoveOption(location)}
-                className="p-0.5 rounded-full hover:bg-date-purple/20 text-date-purple/60 hover:text-date-purple cursor-pointer transition-colors ml-1"
+                className="p-0.5 rounded-full hover:bg-accent-500/20 text-accent-400/60 hover:text-accent-400 cursor-pointer transition-colors ml-1"
                 title={`Remove ${location}`}
               >
                 <X className="w-3.5 h-3.5" />

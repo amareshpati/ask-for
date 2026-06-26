@@ -5,7 +5,7 @@ import { AnimatedBackground } from '@/components/ui';
 
 export function InvitationNotFound() {
   return (
-    <main className="min-h-dvh relative flex items-center justify-center px-6 py-12">
+    <main className="min-h-dvh relative flex items-center justify-center px-6 py-12 theme-recipient">
       <AnimatedBackground theme="neutral" intensity={0.5} />
 
       <motion.div

@@ -26,8 +26,8 @@ export function Chip({ label, selected = false, onClick, emoji, disabled = false
         disabled:opacity-50 disabled:cursor-not-allowed
         ${
           selected
-            ? 'bg-gradient-to-r from-date-pink to-date-purple text-white shadow-button'
-            : 'bg-surface-100 text-surface-700 border border-surface-200 hover:bg-surface-200 hover:border-surface-300'
+            ? 'bg-gradient-to-r from-accent-500 to-accent-600 text-white shadow-button'
+            : 'bg-white/[0.06] text-surface-300 border border-white/[0.1] hover:bg-white/[0.1] hover:border-white/[0.15]'
         }
       `}
     >

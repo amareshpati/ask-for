@@ -33,7 +33,7 @@ export function ReviewStep({ data }: ReviewStepProps) {
     <div className="space-y-6">
       <div className="text-center">
         <div className="text-5xl mb-4">🎉</div>
-        <h2 className="text-2xl md:text-3xl font-bold text-surface-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-surface-100 mb-2 font-[family-name:var(--font-display)]">
           Review Your Invitation
         </h2>
         <p className="text-surface-500">
@@ -48,14 +48,14 @@ export function ReviewStep({ data }: ReviewStepProps) {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white/80 backdrop-blur-xl border border-surface-200/60 rounded-2xl p-4 flex items-start gap-4"
+            className="bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-4 flex items-start gap-4"
           >
             <span className="text-2xl flex-shrink-0">{field.emoji}</span>
             <div className="min-w-0">
               <span className="text-xs font-medium text-surface-400 uppercase tracking-wider">
                 {field.label}
               </span>
-              <p className="text-surface-900 font-medium mt-0.5 break-words">
+              <p className="text-surface-200 font-medium mt-0.5 break-words">
                 {getDisplayValue(field.key, data[field.key])}
               </p>
             </div>

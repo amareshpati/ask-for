@@ -23,7 +23,7 @@ export default function NotFound() {
         >
           🔮
         </motion.div>
-        <h1 className="text-4xl font-black text-surface-900 mb-3">
+        <h1 className="text-4xl font-black text-surface-100 mb-3 font-[family-name:var(--font-display)]">
           404
         </h1>
         <p className="text-lg text-surface-500 mb-8">
